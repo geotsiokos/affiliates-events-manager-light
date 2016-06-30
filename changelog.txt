@@ -1,0 +1,7 @@
+* 1.0.1
+
+  - fixed : translations not loaded
+
+* 1.0.0
+
+  - Initial release.
