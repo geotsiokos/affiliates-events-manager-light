@@ -51,6 +51,8 @@ class Affiliates_Events_Manager_Light {
 	const BOOKING_STATUS_AWAITING_ONLINE_PAYMENT = 4;
 	const BOOKING_STATUS_AWAITING_PAYMENT        = 5;
 
+	private static $admin_messages = array();
+	
 	/**
 	 * Prints admin notices.
 	 */
