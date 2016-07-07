@@ -96,7 +96,7 @@ class Affiliates_Events_Manager_Light {
 		}
 		
 		if ( $verified ) {
-			add_action( 'init', array( __CLASS__, 'wp_init' ) );			
+			//add_action( 'init', array( __CLASS__, 'wp_init' ) );			
 			add_action( 'affiliates_admin_menu', array( __CLASS__, 'affiliates_admin_menu' ) );
 			add_action( 'em_bookings_added', array( __CLASS__, 'em_bookings_added' ) );
 			add_filter( 'em_booking_set_status', array( __CLASS__, 'em_booking_set_status' ), 10, 2 );
@@ -170,7 +170,7 @@ class Affiliates_Events_Manager_Light {
 		$output .= __( 'The referral rate determines the referral amount based on the net sale made.', 'affiliates-events-manager-light' );
 		$output .= '</p>';
 		$output .= '<p class="description">';
-		$output .= __( 'Example: Set the referral rate to <strong>0.1</strong> if you want your affiliates to get a <strong>10%</strong> commission on each sale.', 'affiliates-events-manager-light' );
+		$output .= __( 'Example: Set the referral rate to <strong>0.1</strong> if you want your affiliates to get a <strong>10%</strong> commission on each booking.', 'affiliates-events-manager-light' );
 		$output .= '</p>';
 	
 		$output .= '<h3>' . __( 'Usage stats', 'affiliates-events-manager-light' ) . '</h3>';
@@ -231,7 +231,6 @@ class Affiliates_Events_Manager_Light {
 
 		// booking price excluding taxes and with discounts applied
 		$price = $em_booking->get_price_pre_taxes();
-		write_log( $price );
 
 		// There is a single currency in Events Manager and there is no API function to obtain
 		// the currency id so we have to use the option directly (EM 5.5.5).
