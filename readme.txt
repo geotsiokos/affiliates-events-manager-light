@@ -1,143 +1,77 @@
- =============================================================================
- Affiliates Events Manager WordPress plugin
- =============================================================================
- Copyright (c) 2015 www.itthinx.com
- =============================================================================
+=== Affiliates Events Manager Light ===
+Contributors: itthinx
+Donate link: http://www.itthinx.com/shop/
+Tags: affiliate, affiliates, marketing, partner, referral, referrer, event, booking, events manager
+Requires at least: 4.0
+Tested up to: 4.6
+Stable tag: 1.0.0
+License: GPLv3
 
-                              LICENSE RESTRICTIONS
+This plugin integrates Affiliates with Events Manager so that affiliates can earn commissions on referred bookings.
 
-            This plugin is provided subject to the license granted.
-               Unauthorized use and distribution is prohibited.
-                      See COPYRIGHT.txt and LICENSE.txt.
+== Description ==
 
- =============================================================================
+This plugin integrates [Affiliates](http://wordpress.org/plugins/affiliates/) with [Events Manager](http://wordpress.org/plugins/events-manager/) so that affiliates can earn commissions on bookings they refer.
 
-  You MUST be granted a license by the copyright holder for those parts that
-  are not provided under the GPLv3 license.
+With this integration plugin, referrals are created automatically for your affiliates when bookings are made.
 
-  If you have not been granted a license DO NOT USE this plugin until you have
-  BEEN GRANTED A LICENSE.
+The plugin allows you to set a referral (commission) rate so that your affiliates get credited with a referral based on a percentage of each booking's total net amount.
 
-  Use of this plugin without a granted license constitutes an act of COPYRIGHT
-  INFRINGEMENT and LICENSE VIOLATION and may result in legal action taken
-  against the offending party.
+An advanced integration is available with [Affiliates Pro](http://www.itthinx.com/shop/affiliates-pro/) and [Affiliates Enterprise](http://www.itthinx.com/shop/affiliates-enterprise/).
 
-  Being granted a license is GOOD because you will get support and contribute
-  to the development of useful free and premium themes and plugins that you
-  will be able to enjoy.
+*Affiliates* is an outstanding platform that helps to promote bookings through your affiliate program and is the ideal affiliate solution for *Events Manager*.
 
-  Thank you!
+Requirements:
 
-  Visit www.itthinx.com for more information.
+- [Affiliates](http://wordpress.org/extend/plugins/affiliates)
+- [Affiliates Events Manager Light](http://wordpress.org/extend/plugins/affiliates-events-manager-light) (this plugin)
+- [Events Manager](http://wordpress.org/extend/plugins/events-manager)
 
- =============================================================================
- 
- * Affiliates Pro
+__Feedback__ is welcome!
+If you need help, have problems, want to leave feedback or want to provide constructive criticism, you can leave a comment here at the [plugin page](http://www.itthinx.com/plugins/affiliates-events-manager-light).
 
-   http://www.itthinx.com/shop/affiliates-pro/
+Please try to solve problems there before you rate this plugin or say it doesn't work. There goes a _lot_ of work into providing you with free quality plugins! Please appreciate that and help with your feedback. Thanks!
 
- * Affiliates Events Manager plugin page
+You are welcome to [follow itthinx](http://twitter.com/itthinx) on Twitter for updates on this and related plugins.
 
-   http://www.itthinx.com/plugins/affiliates-events-manager/
+== Installation ==
 
- =============================================================================
+1. Install and activate the [Events Manager](http://wordpress.org/extend/plugins/events-manager) plugin.
+2. Install and activate the [Affiliates](http://wordpress.org/extend/plugins/affiliates) plugin. Use the default settings or configure it to your needs.
+3. Install and activate the [Affiliates Events Manager Light](http://wordpress.org/extend/plugins/affiliates-events-manager-light) plugin.
+4. A new *Events Manager Integration Light* menu item will appear under the *Affiliates* menu in WordPress. Set the referral rate for your affiliates there.
 
- =============================================================================
+Note that you can install the plugins from your WordPress installation directly: use the *Add new* option found in the *Plugins* menu.
+You can also upload and extract them in your site's `/wp-content/plugins/` directory or use the *Upload* option.
 
-    Table of Contents
+== Frequently Asked Questions ==
 
-    1) Installation
-    2) Setup
-    3) Update
-    4) Documentation
+= What features does this integration provide? =
 
- =============================================================================
+When a booking is made through Events Manager, a referral is recorded for the affiliate that referred it.
 
-1) Installation
-==============================================================================
+= How can I set the amount that affiliates earn on each sale? =
 
-    Affiliates Events Manager integrates the Affiliates plugins with
-    Events Manager - Events Manager is required for this extension to work.
-    This extension also requires one of the Affiliates plugins, the free
-    Affiliates plugin or one of the premium versions, Affiliates Pro or
-    Affiliates Enterprise.
+Go to *Affiliates > Events Manager Integration Light* and set the rate there.
 
-    1) Backup
-    --------------------------------------------------------------------------
+Example: If you want to give an affiliate 10% of each net total booking amount, set the rate to *0.1*.
 
-    Back up your WordPress installation files and database.
+== Screenshots ==
 
-    2) Install and activate Affiliates Pro or Enterprise
-    --------------------------------------------------------------------------
+See also: [Affiliates Events Manager Light](http://www.itthinx.com/plugins/affiliates-events-manager-light/)
 
-    If you have not done so already, install and activate one of the
-    Affiliates plugins.
+1. Referral rate setting - Here, a referral rate set at 0.25 credits affiliates with 25% commissions on sales.
+2. Referrals created automatically for bookings - Each referral is linked to its booking.
 
-    3) Install and activate the Affiliates Events Manager plugin
-    --------------------------------------------------------------------------
+== Changelog ==
 
-	Go to Affiliates > Settings > Integrations, install and activate the
-	integration for Events Manager.
+= 1.0.1 =
+* Fixed : translations not loaded.
 
-2) Setup
-==============================================================================
+= 1.0.0 =
+* Initial release.
 
-    1) Make sure that you have followed the installation instructions above.
-    2) The Events Manager integration does not require any setup. Referrals
-       are recorded for referred bookings automatically and the referral
-       status is syncrhonized to the booking status automatically, too.
+== Upgrade Notice ==
 
-    Please note that additional information may be available on the
-    plugin page and the documentation pages:
-
-    * Affiliates Events Manager
-
-       Plugin page   :
-       http://www.itthinx.com/plugins/affiliates-events-manager/
-
-       Documentation :
-       http://www.itthinx.com/documentation/affiliates-events-manager/
-
-    * Affiliates Pro and Enterprise
-
-      Plugin page   : http://www.itthinx.com/plugins/affiliates-pro/
-      Plugin page   : http://www.itthinx.com/plugins/affiliates-enterprise/
-      Documentation : http://www.itthinx.com/documentation/affiliates
-
-
-3) Update
-==============================================================================
-
-    If you are notified of an updated version of the plugin, follow these
-    instructions to update it:
-
-    1) Backup
-    --------------------------------------------------------------------------
-
-    Back up your WordPress installation files and database.
-
-    2) Upgrade to the new release
-    --------------------------------------------------------------------------
-
-    Upgrading requires an active service key and the itthinx updates plugin
-    installed. Once a new version is available, you will see a notification
-    in your WordPress Dashboard where you can have the plugin updated.
-
-4) Documentation
-==============================================================================
-
-    The documentation for this plugin and the Affiliates plugin are available on
-    the following pages:
-
-    * Affiliates Events Manager
-
-       Plugin page   :
-       http://www.itthinx.com/plugins/affiliates-events-manager
-
-       Documentation :
-       http://www.itthinx.com/documentation/affiliates-events-manager
-
-    * Affiliates
-
-      Plugin page   : http://www.itthinx.com/plugins/affiliates
-      Documentation : http://www.itthinx.com/documentation/affiliates
+= 1.0.1 =
+* This is the first public release.
