@@ -46,8 +46,6 @@ class Affiliates_Events_Manager_Light {
 	const REFERRAL_TYPE         = 'booking';
 	const REFERRAL_RATE         = 'referral-rate';
 	const REFERRAL_RATE_DEFAULT = '0';
-	const USAGE_STATS           = 'usage_stats';
-	const USAGE_STATS_DEFAULT   = true;
 	const NONCE                 = 'aff_em_light_admin_nonce';
 	const SET_ADMIN_OPTIONS     = 'set_admin_options';
 
@@ -146,13 +144,11 @@ class Affiliates_Events_Manager_Light {
 				} else if ( $options[self::REFERRAL_RATE] < 0 ) {
 					$options[self::REFERRAL_RATE] = 0.0;
 				}
-				$options[self::USAGE_STATS] = !empty( $_POST[self::USAGE_STATS] );
 			}
 			update_option( self::PLUGIN_OPTIONS, $options );
 		}
 
 		$referral_rate = isset( $options[self::REFERRAL_RATE] ) ? $options[self::REFERRAL_RATE] : self::REFERRAL_RATE_DEFAULT;
-		$usage_stats   = isset( $options[self::USAGE_STATS] ) ? $options[self::USAGE_STATS] : self::USAGE_STATS_DEFAULT;
 
 		$output .= '<div>';
 		$output .= '<h2>';
@@ -178,15 +174,6 @@ class Affiliates_Events_Manager_Light {
 		$output .= '</p>';
 		$output .= '<p class="description">';
 		$output .= __( 'Example: Set the referral rate to <strong>0.1</strong> if you want your affiliates to get a <strong>10%</strong> commission on each booking.', 'affiliates-events-manager-light' );
-		$output .= '</p>';
-
-		$output .= '<h3>' . __( 'Usage stats', 'affiliates-events-manager-light' ) . '</h3>';
-		$output .= '<p>';
-		$output .= '<input name="' . self::USAGE_STATS . '" type="checkbox" ' . ( $usage_stats ? ' checked="checked" ' : '' ) . '/>';
-		$output .= ' ';
-		$output .= '<label for="' . self::USAGE_STATS . '">' . __( 'Allow the plugin to provide usage stats.', 'affiliates-events-manager-light' ) . '</label>';
-		$output .= '<br/>';
-		$output .= '<span class="description">' . __( 'This will allow the plugin to help in computing how many installations are actually using it. No personal or site data is transmitted, this simply embeds an icon on the bottom of the Affiliates admin pages, so that the number of visits to these can be counted. This is useful to help prioritize development.', 'affiliates-events-manager-light' ) . '</span>';
 		$output .= '</p>';
 
 		$output .= '<p>';
