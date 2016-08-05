@@ -1,0 +1,90 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid   ""
+msgstr  "Project-Id-Version: PACKAGE VERSION\n"
+        "Report-Msgid-Bugs-To: \n"
+        "POT-Creation-Date: 2016-08-05 17:47+0200\n"
+        "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+        "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+        "Language-Team: LANGUAGE <LL@li.org>\n"
+        "Language: \n"
+        "MIME-Version: 1.0\n"
+        "Content-Type: text/plain; charset=CHARSET\n"
+        "Content-Transfer-Encoding: 8bit\n"
+
+#: affiliates-events-manager-light.php:136
+msgid   "Access denied."
+msgstr  ""
+
+#: affiliates-events-manager-light.php:119
+#: affiliates-events-manager-light.php:155
+msgid   "Affiliates Events Manager Integration Light"
+msgstr  ""
+
+#: affiliates-events-manager-light.php:283
+#, php-format
+msgid   "Booking %d"
+msgstr  ""
+
+#: affiliates-events-manager-light.php:120
+msgid   "Events Manager Integration Light"
+msgstr  ""
+
+#: affiliates-events-manager-light.php:176
+msgid   "Example: Set the referral rate to <strong>0.1</strong> if you want "
+        "your affiliates to get a <strong>10%</strong> commission on each "
+        "booking."
+msgstr  ""
+
+#: affiliates-events-manager-light.php:166
+msgid   "Referral Rate"
+msgstr  ""
+
+#: affiliates-events-manager-light.php:168
+msgid   "Referral rate"
+msgstr  ""
+
+#: affiliates-events-manager-light.php:181
+msgid   "Save"
+msgstr  ""
+
+#: affiliates-events-manager-light.php:88
+msgid   "The <strong>Affiliates Events Manager Integration Light</strong> "
+        "plugin requires the <a href=\"http://wordpress.org/plugins/"
+        "affiliates/\">Affiliates</a> plugin."
+msgstr  ""
+
+#: affiliates-events-manager-light.php:91
+msgid   "The <strong>Affiliates Events Manager Integration Light</strong> "
+        "plugin requires the <a href=\"http://wordpress.org/plugins/"
+        "woocommerce/\">Events Manager</a> plugin to be activated."
+msgstr  ""
+
+#: affiliates-events-manager-light.php:173
+msgid   "The referral rate determines the referral amount based on the net "
+        "sale made."
+msgstr  ""
+
+#: affiliates-events-manager-light.php:260
+msgid   "View"
+msgstr  ""
+
+#: affiliates-events-manager-light.php:160
+msgid   "You can support the development of the Affiliates plugin and get "
+        "additional features with <a href=\"http://www.itthinx.com/shop/"
+        "affiliates-pro/\" target=\"_blank\">Affiliates Pro</a> and <a href="
+        "\"http://www.itthinx.com/shop/affiliates-enterprise/\" target="
+        "\"_blank\">Affiliates Enterprise</a>."
+msgstr  ""
+
+#: affiliates-events-manager-light.php:94
+msgid   "You do not need to use the <srtrong>Affiliates Events Manager "
+        "Integration Light</strong> plugin because you are already using the "
+        "advanced Affiliates Events Manager Integration plugin. Please "
+        "deactivate the <strong>Affiliates Events Manager Integration Light</"
+        "strong> plugin now."
+msgstr  ""
