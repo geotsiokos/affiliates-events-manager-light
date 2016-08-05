@@ -44,8 +44,8 @@ class Affiliates_Events_Manager_Light {
 
 	const PLUGIN_OPTIONS        = 'affiliates_events_manager_light';
 	const REFERRAL_TYPE         = 'booking';
-	const REFERRAL_RATE         = "referral-rate";
-	const REFERRAL_RATE_DEFAULT = "0";
+	const REFERRAL_RATE         = 'referral-rate';
+	const REFERRAL_RATE_DEFAULT = '0';
 	const USAGE_STATS           = 'usage_stats';
 	const USAGE_STATS_DEFAULT   = true;
 	const NONCE                 = 'aff_em_light_admin_nonce';
@@ -87,13 +87,13 @@ class Affiliates_Events_Manager_Light {
 		$affiliates_events_manager_is_active = in_array( 'affiliates-events-manager/affiliates-events-manager.php', $active_plugins );
 
 		if ( !$affiliates_is_active ) {
-			self::$admin_messages[] = "<div class='error'>" . __( 'The <strong>Affiliates Events Manager Integration Light</strong> plugin requires the <a href="http://wordpress.org/plugins/affiliates/">Affiliates</a> plugin.', 'affiliates-events-manager-light' ) . "</div>";
+			self::$admin_messages[] = '<div class="error">' . __( 'The <strong>Affiliates Events Manager Integration Light</strong> plugin requires the <a href="http://wordpress.org/plugins/affiliates/">Affiliates</a> plugin.', 'affiliates-events-manager-light' ) . '</div>';
 		}
 		if ( !$events_manager_is_active ) {
-			self::$admin_messages[] = "<div class='error'>" . __( 'The <strong>Affiliates Events Manager Integration Light</strong> plugin requires the <a href="http://wordpress.org/plugins/woocommerce/">Events Manager</a> plugin to be activated.', 'affiliates-events-manager-light' ) . "</div>";
+			self::$admin_messages[] = '<div class="error">' . __( 'The <strong>Affiliates Events Manager Integration Light</strong> plugin requires the <a href="http://wordpress.org/plugins/woocommerce/">Events Manager</a> plugin to be activated.', 'affiliates-events-manager-light' ) . '</div>';
 		}
 		if ( $affiliates_events_manager_is_active ) {
-			self::$admin_messages[] = "<div class='error'>" . __( 'You do not need to use the <srtrong>Affiliates Events Manager Integration Light</strong> plugin because you are already using the advanced Affiliates Events Manager Integration plugin. Please deactivate the <strong>Affiliates Events Manager Integration Light</strong> plugin now.', 'affiliates-events-manager-light' ) . "</div>";
+			self::$admin_messages[] = '<div class="error">' . __( 'You do not need to use the <srtrong>Affiliates Events Manager Integration Light</strong> plugin because you are already using the advanced Affiliates Events Manager Integration plugin. Please deactivate the <strong>Affiliates Events Manager Integration Light</strong> plugin now.', 'affiliates-events-manager-light' ) . '</div>';
 		}
 		if ( !$affiliates_is_active || !$events_manager_is_active || $affiliates_events_manager_is_active ) {
 			if ( $disable ) {
@@ -276,7 +276,7 @@ class Affiliates_Events_Manager_Light {
 				$value = wp_strip_all_tags( $value );
 			}
 			$data[$key] = array (
-				'title'  => ucwords( str_replace('_',' ', $key ) ),
+				'title'  => ucwords( str_replace( '_',' ', $key ) ),
 				'domain' => AFFILIATES_EVENTS_MANAGER_PLUGIN_DOMAIN,
 				'value'  => $value
 			);
@@ -314,11 +314,11 @@ class Affiliates_Events_Manager_Light {
 		$status = self::get_referral_status( $em_booking );
 		$referrals_table = _affiliates_get_tablename( 'referrals' );
 		if ( $referrals = $wpdb->get_results( $wpdb->prepare(
-				"SELECT DISTINCT referral_id FROM $referrals_table WHERE reference = %s AND type = %s AND status != %s AND status != %s",
-				$em_booking->booking_id,
-				self::REFERRAL_TYPE,
-				$status,
-				AFFILIATES_REFERRAL_STATUS_CLOSED
+			"SELECT DISTINCT referral_id FROM $referrals_table WHERE reference = %s AND type = %s AND status != %s AND status != %s",
+			$em_booking->booking_id,
+			self::REFERRAL_TYPE,
+			$status,
+			AFFILIATES_REFERRAL_STATUS_CLOSED
 		) ) ) {
 			foreach( $referrals as $referral ) {
 				affiliates_update_referral(
@@ -351,8 +351,8 @@ class Affiliates_Events_Manager_Light {
 			) ) ) {
 				foreach( $referrals as $referral ) {
 					affiliates_update_referral(
-					$referral->referral_id,
-					array( 'status' => $status )
+						$referral->referral_id,
+						array( 'status' => $status )
 					);
 				}
 			}
