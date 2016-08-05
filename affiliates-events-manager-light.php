@@ -2,12 +2,16 @@
 /**
  * affiliates-events-manager-light.php
  *
- * Copyright (c) 2015 www.itthinx.com
+ * Copyright (c) 2016 www.itthinx.com
+ * 
+ * This code is released under the GNU General Public License.
+ * See COPYRIGHT.txt and LICENSE.txt.
  * 
  * This code is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * 
  * This header and all notices must be kept intact.
  *
  * @author itthinx
@@ -16,9 +20,13 @@
  *
  * Plugin Name: Affiliates Events Manager Light
  * Plugin URI: http://www.itthinx.com/plugins/affiliates-events-manager-light/
- * Description: Integrates Affiliates with Events Manager.
+ * Description: Integrates Affiliates with Events Manager so that affiliates can earn commissions on referred bookings.
  * Author: itthinx
  * Author URI: http://www.itthinx.com/
+ * Donate-Link: http://www.itthinx.com
+ * Text Domain: affiliates-events-manager-light
+ * Domain Path: /languages
+ * License: GPLv3
  * Version: 1.0.1
  */
 
