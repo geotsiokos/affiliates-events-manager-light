@@ -38,7 +38,7 @@ define( 'AFFILIATES_EM_PLUGIN_URL', WP_PLUGIN_URL . '/affiliates-events-manager-
 define( 'AFFILIATES_EVENTS_MANAGER_PLUGIN_DOMAIN', 'affiliates-events-manager-light' );
 
 /**
- * Events Manager integration. 
+ * Basic Events Manager integration. 
  */
 class Affiliates_Events_Manager_Light {
 
