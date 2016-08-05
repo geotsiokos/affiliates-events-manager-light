@@ -42,14 +42,14 @@ define( 'AFFILIATES_EVENTS_MANAGER_PLUGIN_DOMAIN', 'affiliates-events-manager-li
  */
 class Affiliates_Events_Manager_Light {
 
-	const PLUGIN_OPTIONS 			= 'affiliates_events_manager_light';
-	const REFERRAL_TYPE 			= 'booking';
-	const REFERRAL_RATE 			= "referral-rate";
-	const REFERRAL_RATE_DEFAULT 	= "0";
-	const USAGE_STATS 				= 'usage_stats';
-	const USAGE_STATS_DEFAULT 		= true;
-	const NONCE 					= 'aff_em_light_admin_nonce';
-	const SET_ADMIN_OPTIONS 		= 'set_admin_options';
+	const PLUGIN_OPTIONS        = 'affiliates_events_manager_light';
+	const REFERRAL_TYPE         = 'booking';
+	const REFERRAL_RATE         = "referral-rate";
+	const REFERRAL_RATE_DEFAULT = "0";
+	const USAGE_STATS           = 'usage_stats';
+	const USAGE_STATS_DEFAULT   = true;
+	const NONCE                 = 'aff_em_light_admin_nonce';
+	const SET_ADMIN_OPTIONS     = 'set_admin_options';
 
 	// Events Manager uses magic numbers
 	const BOOKING_STATUS_UNAPPROVED              = 0;
@@ -60,7 +60,7 @@ class Affiliates_Events_Manager_Light {
 	const BOOKING_STATUS_AWAITING_PAYMENT        = 5;
 
 	private static $admin_messages = array();
-	
+
 	/**
 	 * Prints admin notices.
 	 */
@@ -71,21 +71,21 @@ class Affiliates_Events_Manager_Light {
 			}
 		}
 	}
-	
+
 	/**
 	 * Checks dependencies and sets up actions and filters.
 	 */
 	public static function init() {
-		
+
 		add_action( 'admin_notices', array( __CLASS__, 'admin_notices' ) );
-		
+
 		$verified = true;
 		$disable = false;
-		$active_plugins = get_option( 'active_plugins', array() );		
+		$active_plugins = get_option( 'active_plugins', array() );
 		$affiliates_is_active = in_array( 'affiliates/affiliates.php', $active_plugins ) || in_array( 'affiliates-pro/affiliates-pro.php', $active_plugins ) || in_array( 'affiliates-enterprise/affiliates-enterprise.php', $active_plugins );
 		$events_manager_is_active = in_array( 'events-manager/events-manager.php', $active_plugins );
 		$affiliates_events_manager_is_active = in_array( 'affiliates-events-manager/affiliates-events-manager.php', $active_plugins );
-		
+
 		if ( !$affiliates_is_active ) {
 			self::$admin_messages[] = "<div class='error'>" . __( 'The <strong>Affiliates Events Manager Integration Light</strong> plugin requires the <a href="http://wordpress.org/plugins/affiliates/">Affiliates</a> plugin.', 'affiliates-events-manager-light' ) . "</div>";
 		}
@@ -102,9 +102,9 @@ class Affiliates_Events_Manager_Light {
 			}
 			$verified = false;
 		}
-		
+
 		if ( $verified ) {
-			//add_action( 'init', array( __CLASS__, 'wp_init' ) );			
+			//add_action( 'init', array( __CLASS__, 'wp_init' ) );
 			add_action( 'affiliates_admin_menu', array( __CLASS__, 'affiliates_admin_menu' ) );
 			add_action( 'em_bookings_added', array( __CLASS__, 'em_bookings_added' ) );
 			add_filter( 'em_booking_set_status', array( __CLASS__, 'em_booking_set_status' ), 10, 2 );
@@ -128,7 +128,7 @@ class Affiliates_Events_Manager_Light {
 		add_action( 'admin_print_styles-' . $page, 'affiliates_admin_print_styles' );
 		add_action( 'admin_print_scripts-' . $page, 'affiliates_admin_print_scripts' );
 	}
-	
+
 	/**
 	 * Affiliates Events Manager Integration Light : admin section.
 	 */
@@ -150,21 +150,20 @@ class Affiliates_Events_Manager_Light {
 			}
 			update_option( self::PLUGIN_OPTIONS, $options );
 		}
-	
+
 		$referral_rate = isset( $options[self::REFERRAL_RATE] ) ? $options[self::REFERRAL_RATE] : self::REFERRAL_RATE_DEFAULT;
 		$usage_stats   = isset( $options[self::USAGE_STATS] ) ? $options[self::USAGE_STATS] : self::USAGE_STATS_DEFAULT;
-	
-		$output .=
-		'<div>' .
-		'<h2>' .
-		__( 'Affiliates Events Manager Integration Light', 'affiliates-events-manager-light' ) .
-		'</h2>' .
-		'</div>';
-	
+
+		$output .= '<div>';
+		$output .= '<h2>';
+		$output .= __( 'Affiliates Events Manager Integration Light', 'affiliates-events-manager-light' );
+		$output .= '</h2>';
+		$output .= '</div>';
+
 		$output .= '<p class="manage" style="padding:1em;margin-right:1em;font-weight:bold;font-size:1em;line-height:1.62em">';
 		$output .= __( 'You can support the development of the Affiliates plugin and get additional features with <a href="http://www.itthinx.com/shop/affiliates-pro/" target="_blank">Affiliates Pro</a> and <a href="http://www.itthinx.com/shop/affiliates-enterprise/" target="_blank">Affiliates Enterprise</a>.', 'affiliates-events-manager-light' );
 		$output .= '</p>';
-	
+
 		$output .= '<div class="manage" style="padding:2em;margin-right:1em;">';
 		$output .= '<form action="" name="options" method="post">';
 		$output .= '<div>';
@@ -180,7 +179,7 @@ class Affiliates_Events_Manager_Light {
 		$output .= '<p class="description">';
 		$output .= __( 'Example: Set the referral rate to <strong>0.1</strong> if you want your affiliates to get a <strong>10%</strong> commission on each booking.', 'affiliates-events-manager-light' );
 		$output .= '</p>';
-	
+
 		$output .= '<h3>' . __( 'Usage stats', 'affiliates-events-manager-light' ) . '</h3>';
 		$output .= '<p>';
 		$output .= '<input name="' . self::USAGE_STATS . '" type="checkbox" ' . ( $usage_stats ? ' checked="checked" ' : '' ) . '/>';
@@ -189,20 +188,21 @@ class Affiliates_Events_Manager_Light {
 		$output .= '<br/>';
 		$output .= '<span class="description">' . __( 'This will allow the plugin to help in computing how many installations are actually using it. No personal or site data is transmitted, this simply embeds an icon on the bottom of the Affiliates admin pages, so that the number of visits to these can be counted. This is useful to help prioritize development.', 'affiliates-events-manager-light' ) . '</span>';
 		$output .= '</p>';
-	
+
 		$output .= '<p>';
 		$output .= wp_nonce_field( self::SET_ADMIN_OPTIONS, self::NONCE, true, false );
 		$output .= '<input class="button-primary" type="submit" name="submit" value="' . __( 'Save', 'affiliates-events-manager-light' ) . '"/>';
 		$output .= '</p>';
-	
+
 		$output .= '</div>';
 		$output .= '</form>';
 		$output .= '</div>';
-	
+
 		echo $output;
-	
+
 		affiliates_footer();
 	}
+
 	/**
 	 * Load translations.
 	 */
@@ -288,16 +288,16 @@ class Affiliates_Events_Manager_Light {
 		}
 		if ( !$post_id ) {
 			$post_id = null;
-		}		
-		
-		$options 		= get_option( self::PLUGIN_OPTIONS , array() );
-		$referral_rate  = isset( $options[self::REFERRAL_RATE] ) ? $options[self::REFERRAL_RATE] : self::REFERRAL_RATE_DEFAULT;
-		$amount 		= round( floatval( $referral_rate ) * floatval( $price ), AFFILIATES_REFERRAL_AMOUNT_DECIMALS );
-		$description 	= sprintf( __( 'Booking %d', AFFILIATES_EVENTS_MANAGER_PLUGIN_DOMAIN ), $em_booking->booking_id );
-		$status       	= self::get_referral_status( $em_booking );
-		$type			= self::REFERRAL_TYPE;
-		$reference		= $em_booking->booking_id;
-		$aff_id 		= affiliates_suggest_referral( $post_id, $description, $data, $amount, $currency, $status, $type, $reference );		
+		}
+
+		$options       = get_option( self::PLUGIN_OPTIONS , array() );
+		$referral_rate = isset( $options[self::REFERRAL_RATE] ) ? $options[self::REFERRAL_RATE] : self::REFERRAL_RATE_DEFAULT;
+		$amount        = round( floatval( $referral_rate ) * floatval( $price ), AFFILIATES_REFERRAL_AMOUNT_DECIMALS );
+		$description   = sprintf( __( 'Booking %d', AFFILIATES_EVENTS_MANAGER_PLUGIN_DOMAIN ), $em_booking->booking_id );
+		$status        = self::get_referral_status( $em_booking );
+		$type          = self::REFERRAL_TYPE;
+		$reference     = $em_booking->booking_id;
+		$aff_id        = affiliates_suggest_referral( $post_id, $description, $data, $amount, $currency, $status, $type, $reference );
 
 	}
 
@@ -388,5 +388,6 @@ class Affiliates_Events_Manager_Light {
 		}
 		return $status;
 	}
+
 }
 Affiliates_Events_Manager_Light::init();
