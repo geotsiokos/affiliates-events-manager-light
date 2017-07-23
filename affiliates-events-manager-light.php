@@ -35,7 +35,7 @@ if ( !defined('ABSPATH' ) ) {
 }
 
 define( 'AFFILIATES_EM_PLUGIN_URL', WP_PLUGIN_URL . '/affiliates-events-manager-light' );
-define( 'AFFILIATES_EVENTS_MANAGER_PLUGIN_DOMAIN', 'affiliates-events-manager-light' );
+define( 'AFF_EVENTS_MANAGER_PLUGIN_DOMAIN', 'affiliates-events-manager-light' );
 
 /**
  * Basic Events Manager integration. 
@@ -91,7 +91,7 @@ class Affiliates_Events_Manager_Light {
 			self::$admin_messages[] = '<div class="error">' . __( 'The <strong>Affiliates Events Manager Integration Light</strong> plugin requires the <a href="http://wordpress.org/plugins/woocommerce/">Events Manager</a> plugin to be activated.', 'affiliates-events-manager-light' ) . '</div>';
 		}
 		if ( $affiliates_events_manager_is_active ) {
-			self::$admin_messages[] = '<div class="error">' . __( 'You do not need to use the <srtrong>Affiliates Events Manager Integration Light</strong> plugin because you are already using the advanced Affiliates Events Manager Integration plugin. Please deactivate the <strong>Affiliates Events Manager Integration Light</strong> plugin now.', 'affiliates-events-manager-light' ) . '</div>';
+			self::$admin_messages[] = '<div class="error">' . __( 'You do not need to use the <strong>Affiliates Events Manager Integration Light</strong> plugin because you are already using the advanced Affiliates Events Manager Integration plugin. Please deactivate the <strong>Affiliates Events Manager Integration Light</strong> plugin now.', 'affiliates-events-manager-light' ) . '</div>';
 		}
 		if ( !$affiliates_is_active || !$events_manager_is_active || $affiliates_events_manager_is_active ) {
 			if ( $disable ) {
@@ -219,73 +219,53 @@ class Affiliates_Events_Manager_Light {
 	 * @param EM_Booking $em_booking
 	 */
 	public static function em_bookings_added( $em_booking ) {
-
-		global $wpdb, $affiliates_db;
-
-		//$options = get_option( Affiliates_Events_Manager_Light::PLUGIN_OPTIONS , array() );
-
+		
 		// booking price excluding taxes and with discounts applied
 		$price = $em_booking->get_price_pre_taxes();
 
 		// There is a single currency in Events Manager and there is no API function to obtain
 		// the currency id so we have to use the option directly (EM 5.5.5).
 		$currency = get_option( 'dbem_bookings_currency' );
-
 		$em_event = $em_booking->get_event();
-		$info = array();
-		if ( isset( $em_event->event_name ) ) {
-			$info['event_name'] = $em_event->event_name;
-		}
-		$info['booking']    = $em_booking->booking_id;
-		$info['spaces']     = $em_booking->get_spaces();
-		$info['price']      = $price;
-		$info['currency']   = $currency;
-		$info['admin_link'] = $em_booking->get_admin_url();
-		if ( $person = $em_booking->get_person() ) {
-			if ( $name = $person->get_name() ) {
-				$info['person_name'] = $name;
-			}
-		}
 
-		$data = array();
-		foreach ( $info as $key => $value ) {
-			$value = maybe_unserialize( $value );
-			if ( is_array( $value ) ) {
-				$value = implode( ',', $value );
-			}
-			if ( $key === 'admin_link' ) {
-				$value = sprintf(
-					'<a href="%s">%s</a>',
-					$value,
-					__( 'View', AFFILIATES_EVENTS_MANAGER_PLUGIN_DOMAIN )
-				);
-			} else {
-				$value = wp_strip_all_tags( $value );
-			}
-			$data[$key] = array (
-				'title'  => ucwords( str_replace( '_',' ', $key ) ),
-				'domain' => AFFILIATES_EVENTS_MANAGER_PLUGIN_DOMAIN,
-				'value'  => $value
-			);
-		}
-
-		$post_id = get_the_ID();
-		if ( !$post_id ) {
-			$post_id = url_to_postid( self::get_url() );
-		}
-		if ( !$post_id ) {
-			$post_id = null;
-		}
+		$data = array(
+		    'booking_id' => array(
+		        'title' => 'Booking #',
+		        'domain' => AFF_EVENTS_MANAGER_PLUGIN_DOMAIN,
+		        'value' => esc_sql( $em_booking->booking_id )
+		    ),
+		    'booking_total' => array(
+		        'title' => 'Total',
+		        'domain' =>  AFF_EVENTS_MANAGER_PLUGIN_DOMAIN,
+		        'value' => esc_sql( $price )
+		    ),
+		    'booking_currency' => array(
+		        'title' => 'Currency',
+		        'domain' =>  AFF_EVENTS_MANAGER_PLUGIN_DOMAIN,
+		        'value' => esc_sql( $currency )
+		    ),
+		    'booking_link' => array(
+		        'title' => 'Booking',
+		        'domain' =>  AFF_EVENTS_MANAGER_PLUGIN_DOMAIN,
+		        'value' => esc_sql(
+		            sprintf(
+		                '<a href="%s">%s</a>',
+		                $em_booking->get_admin_url(),
+		                __( 'View', AFF_EVENTS_MANAGER_PLUGIN_DOMAIN )
+		                )
+		            )
+		    )
+		);
 
 		$options       = get_option( self::PLUGIN_OPTIONS , array() );
+		$post_id       = $em_event->post_id;
 		$referral_rate = isset( $options[self::REFERRAL_RATE] ) ? $options[self::REFERRAL_RATE] : self::REFERRAL_RATE_DEFAULT;
-		$amount        = round( floatval( $referral_rate ) * floatval( $price ), AFFILIATES_REFERRAL_AMOUNT_DECIMALS );
+		$amount        = bcmul( $referral_rate, $price, AFFILIATES_REFERRAL_AMOUNT_DECIMALS );
 		$description   = sprintf( __( 'Booking %d', AFFILIATES_EVENTS_MANAGER_PLUGIN_DOMAIN ), $em_booking->booking_id );
 		$status        = self::get_referral_status( $em_booking );
 		$type          = self::REFERRAL_TYPE;
 		$reference     = $em_booking->booking_id;
 		$aff_id        = affiliates_suggest_referral( $post_id, $description, $data, $amount, $currency, $status, $type, $reference );
-
 	}
 
 	/**
