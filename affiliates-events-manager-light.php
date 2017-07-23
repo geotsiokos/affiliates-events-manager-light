@@ -194,7 +194,7 @@ class Affiliates_Events_Manager_Light {
 	 * Load translations.
 	 */
 	public static function wp_init() {
-		load_plugin_textdomain( AFFILIATES_EVENTS_MANAGER_PLUGIN_DOMAIN, null, 'affiliates-events-manager/languages' );
+		load_plugin_textdomain( AFF_EVENTS_MANAGER_PLUGIN_DOMAIN, null, 'affiliates-events-manager/languages' );
 	}
 
 	/**
@@ -261,7 +261,7 @@ class Affiliates_Events_Manager_Light {
 		$post_id       = $em_event->post_id;
 		$referral_rate = isset( $options[self::REFERRAL_RATE] ) ? $options[self::REFERRAL_RATE] : self::REFERRAL_RATE_DEFAULT;
 		$amount        = bcmul( $referral_rate, $price, AFFILIATES_REFERRAL_AMOUNT_DECIMALS );
-		$description   = sprintf( __( 'Booking %d', AFFILIATES_EVENTS_MANAGER_PLUGIN_DOMAIN ), $em_booking->booking_id );
+		$description   = sprintf( __( 'Booking %d', AFF_EVENTS_MANAGER_PLUGIN_DOMAIN ), $em_booking->booking_id );
 		$status        = self::get_referral_status( $em_booking );
 		$type          = self::REFERRAL_TYPE;
 		$reference     = $em_booking->booking_id;
