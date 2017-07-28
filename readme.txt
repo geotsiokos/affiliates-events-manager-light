@@ -3,8 +3,8 @@ Contributors: itthinx
 Donate link: http://www.itthinx.com/shop/
 Tags: affiliate, affiliates, marketing, partner, referral, referrer, event, booking, events manager
 Requires at least: 4.0
-Tested up to: 4.6
-Stable tag: 1.0.0
+Tested up to: 4.8
+Stable tag: 2.0.0
 License: GPLv3
 
 This plugin integrates Affiliates with Events Manager so that affiliates can earn commissions on referred bookings.
@@ -64,6 +64,9 @@ See also: [Affiliates Events Manager Light](http://www.itthinx.com/plugins/affil
 2. Referrals created automatically for bookings - Each referral is linked to its booking.
 
 == Changelog ==
+
+= 2.0.0
+* Tested up to WordPress 4.8
 
 = 1.0.1 =
 * Fixed : translations not loaded.
