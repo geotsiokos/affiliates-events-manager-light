@@ -1,6 +1,6 @@
 == Affiliates Events Manager Light - Changelog ==
 
-= 2.0.0
+= 2.0.0 =
 * Tested up to WordPress 4.8
 
 = 1.0.1 =

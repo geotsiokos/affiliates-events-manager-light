@@ -65,7 +65,7 @@ See also: [Affiliates Events Manager Light](http://www.itthinx.com/plugins/affil
 
 == Changelog ==
 
-= 2.0.0
+= 2.0.0 =
 * Tested up to WordPress 4.8
 
 = 1.0.1 =
