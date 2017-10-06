@@ -19,6 +19,10 @@
  * @since affiliates-events-manager-light 2.0.0
  */
 
+if ( !defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * Affliates Events Manager Light class
  */
@@ -336,7 +340,7 @@ class Affiliates_Events_Manager_Light {
 					"SELECT DISTINCT referral_id FROM $referrals_table WHERE reference = %s AND type = %s AND status != %s",
 					$em_booking->booking_id,
 					self::REFERRAL_TYPE,
-					$status
+					AFFILIATES_REFERRAL_STATUS_CLOSED
 				)
 			) ) {
 				foreach ( $referrals as $referral ) {
