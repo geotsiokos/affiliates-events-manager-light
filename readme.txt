@@ -3,7 +3,7 @@ Contributors: itthinx
 Donate link: http://www.itthinx.com/shop/
 Tags: affiliate, affiliates, marketing, partner, referral, referrer, event, booking, events manager
 Requires at least: 4.0
-Tested up to: 4.8
+Tested up to: 4.8.2
 Stable tag: 2.0.0
 License: GPLv3
 
